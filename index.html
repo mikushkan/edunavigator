@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduNavigator — AI Career Guidance System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --surface2: #f1f3f5;
+      --border: #e9ecef;
+      --text: #212529;
+      --text2: #6c757d;
+      --text3: #adb5bd;
+      --accent: #2E86AB;
+      --accent2: #A23B72;
+      --accent3: #F18F01;
+      --radius: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --surface: #161b22;
+        --surface2: #21262d;
+        --border: #30363d;
+        --text: #e6edf3;
+        --text2: #8b949e;
+        --text3: #484f58;
+      }
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 72px 24px 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e8f4f8;
+      color: #1a6b8a;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      border: 1px solid #b8dce8;
+    }
+    @media (prefers-color-scheme: dark) {
+      .badge { background: #0d2a35; color: #5bbcdc; border-color: #1a4a5e; }
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+    .hero h1 .highlight { color: var(--accent); }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text2);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover { background: var(--surface2); }
+
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .stat {
+      background: var(--surface);
+      padding: 24px 16px;
+      text-align: center;
+    }
+    .stat-n {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .stat-l {
+      font-size: 12px;
+      color: var(--text2);
+      margin-top: 2px;
+    }
+
+    /* SECTIONS */
+    section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: -0.2px;
+    }
+    .section-sub {
+      font-size: 15px;
+      color: var(--text2);
+      margin-bottom: 36px;
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .feature {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .feature-ico {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    .feature h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .feature p {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    /* HOW IT WORKS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .step-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text3);
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+    .step h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .step p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+    /* DEMO */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+    .demo-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 6px;
+    }
+    .slider-wrap { margin-bottom: 14px; }
+    .slider-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text2);
+      margin-bottom: 5px;
+    }
+    .slider-top .val { font-weight: 600; color: var(--text); }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+    .prediction-box {
+      background: #e8f4f8;
+      border: 1px solid #b8dce8;
+      color: #1a6b8a;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 20px;
+    }
+    @media (prefers-color-scheme: dark) {
+      .prediction-box { background: #0d2a35; color: #5bbcdc; border-color: #1a4a5e; }
+    }
+    .prob-item { margin-bottom: 10px; }
+    .prob-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text2);
+      margin-bottom: 4px;
+    }
+    .prob-track {
+      height: 6px;
+      background: var(--surface2);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .prob-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.35s ease;
+    }
+
+    /* TECH STACK */
+    .stack-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 13px;
+      color: var(--text2);
+    }
+
+    /* MODULES */
+    .modules-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .module-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text2);
+    }
+    .module-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #d4edda;
+      color: #155724;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+    @media (prefers-color-scheme: dark) {
+      .module-check { background: #1a3a24; color: #4cae6e; }
+    }
+
+    /* CTA */
+    .cta-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 56px 40px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .cta-box h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .cta-box p {
+      font-size: 15px;
+      color: var(--text2);
+      margin-bottom: 28px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 2;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 32px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .features { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .demo-grid { grid-template-columns: 1fr; }
+      .modules-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">🎓 EduNavigator</div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="https://github.com/mikushkan/-" target="_blank">GitHub ↗</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">🇰🇿 Orleu National Centre · Kazakhstan</div>
+  <h1><span class="highlight">EduNavigator</span><br>AI Career Guidance<br>for School Students</h1>
+  <p class="hero-sub">Machine learning system that predicts the most suitable career direction based on a student's academic profile — built for the Kazakhstani education context.</p>
+  <div class="btn-row">
+    <a href="https://mektep.streamlit.app" target="_blank" class="btn-primary">▶ Try live app</a>
+    <a href="https://github.com/mikushkan/-" target="_blank" class="btn-secondary">⌥ View on GitHub</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-n">500+</div><div class="stat-l">Training samples</div></div>
+    <div class="stat"><div class="stat-n">95%</div><div class="stat-l">Model accuracy</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">Career domains</div></div>
+    <div class="stat"><div class="stat-n">200</div><div class="stat-l">Trees (RF)</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="section-eyebrow">Features</div>
+    <div class="section-title">What the system does</div>
+    <p class="section-sub">Three core ML capabilities — not rule-based logic. Every prediction is data-driven.</p>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-ico">🤖</div>
+        <h3>AI prediction</h3>
+        <p>Random Forest classifier trained on academic aptitude scores across 5 subject domains.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-ico">📊</div>
+        <h3>Probability breakdown</h3>
+        <p>Shows match percentage for all career paths — not just the top result.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-ico">📄</div>
+        <h3>PDF report</h3>
+        <p>Generates a printable career guidance report for each student with full analytics.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-ico">📈</div>
+        <h3>Analytics dashboard</h3>
+        <p>Seaborn visualisations showing class-wide trends and feature correlations.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-ico">🌐</div>
+        <h3>Web interface</h3>
+        <p>Deployed on Streamlit Cloud — no installation needed, runs in any browser.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-ico">🏫</div>
+        <h3>Kazakhstan context</h3>
+        <p>Career domains mapped to the Kazakhstani school curriculum and subject areas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="section-eyebrow">Methodology</div>
+    <div class="section-title">How it works</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01 · INPUT</div>
+        <h3>Academic profile</h3>
+        <p>Student scores (1–100) across 5 areas: technical, natural sciences, social, humanities, creative arts.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02 · MODEL</div>
+        <h3>Random Forest</h3>
+        <p>200-tree ensemble classifier trained with scikit-learn. Feature importance extracted and visualised.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03 · OUTPUT</div>
+        <h3>Career path + report</h3>
+        <p>Primary recommendation + probability ranking for all 5 domains + downloadable PDF report.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section id="demo">
+    <div class="section-eyebrow">Interactive demo</div>
+    <div class="section-title">Try the model</div>
+    <p class="section-sub">Adjust the sliders to see predictions change in real time.</p>
+    <div class="demo-grid">
+      <div>
+        <div class="demo-label">Academic scores (1–100)</div>
+        <div class="slider-wrap">
+          <div class="slider-top"><span>💻 Math & Physics</span><span class="val" id="v1">75</span></div>
+          <input type="range" min="1" max="100" value="75" step="1" oninput="document.getElementById('v1').textContent=this.value;updatePred()">
+        </div>
+        <div class="slider-wrap">
+          <div class="slider-top"><span>🏥 Biology & Chemistry</span><span class="val" id="v2">50</span></div>
+          <input type="range" min="1" max="100" value="50" step="1" oninput="document.getElementById('v2').textContent=this.value;updatePred()">
+        </div>
+        <div class="slider-wrap">
+          <div class="slider-top"><span>⚖️ History & Geography</span><span class="val" id="v3">40</span></div>
+          <input type="range" min="1" max="100" value="40" step="1" oninput="document.getElementById('v3').textContent=this.value;updatePred()">
+        </div>
+        <div class="slider-wrap">
+          <div class="slider-top"><span>📚 Languages & Literature</span><span class="val" id="v4">60</span></div>
+          <input type="range" min="1" max="100" value="60" step="1" oninput="document.getElementById('v4').textContent=this.value;updatePred()">
+        </div>
+        <div class="slider-wrap">
+          <div class="slider-top"><span>🎨 Arts & Design</span><span class="val" id="v5">30</span></div>
+          <input type="range" min="1" max="100" value="30" step="1" oninput="document.getElementById('v5').textContent=this.value;updatePred()">
+        </div>
+        <div class="prediction-box" id="pred-box">💻 IT & Engineering</div>
+      </div>
+      <div>
+        <div class="demo-label">Career match probabilities</div>
+        <div id="probs"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="section-eyebrow">Tech stack</div>
+    <div class="section-title">Built with</div>
+    <div class="stack-pills">
+      <span class="pill">Python 3.x</span>
+      <span class="pill">scikit-learn</span>
+      <span class="pill">Pandas</span>
+      <span class="pill">NumPy</span>
+      <span class="pill">Seaborn</span>
+      <span class="pill">Matplotlib</span>
+      <span class="pill">Streamlit</span>
+      <span class="pill">ReportLab</span>
+      <span class="pill">Random Forest</span>
+      <span class="pill">GitHub Pages</span>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section>
+    <div class="section-eyebrow">Academic context</div>
+    <div class="section-title">Course modules covered</div>
+    <p class="section-sub">This project implements concepts from all core modules of the Orleu professional development programme.</p>
+    <div class="modules-list">
+      <div class="module-item"><div class="module-check">✓</div>Module 4.1 — Data analysis & visualisation</div>
+      <div class="module-item"><div class="module-check">✓</div>Module 3.4 — Seaborn statistical visualisation</div>
+      <div class="module-item"><div class="module-check">✓</div>Module 6.4 — Random Forest & ensembles</div>
+      <div class="module-item"><div class="module-check">✓</div>Module 2.2 — Probability theory</div>
+      <div class="module-item"><div class="module-check">✓</div>Module 5.1 — Regression foundations</div>
+      <div class="module-item"><div class="module-check">✓</div>Module 1.2 — AI in education ethics</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Ready to explore?</h2>
+    <p>The full app runs on Streamlit Cloud. Try it live or review the complete source code on GitHub.</p>
+    <div class="btn-row" style="margin-bottom:0;">
+      <a href="https://mektep.streamlit.app" target="_blank" class="btn-primary">▶ Open live app</a>
+      <a href="https://github.com/mikushkan/-" target="_blank" class="btn-secondary">⌥ GitHub repo</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>EduNavigator</strong> · AI-Powered Career Guidance System<br>
+  Developed by <a href="https://linkedin.com/in/mikushkan">Meruyert Sambetova</a> · Bolashak Scholar · AlmaU, Kazakhstan<br>
+  Capstone project for <em>Orleu National Centre for Professional Development</em><br>
+  <a href="https://github.com/mikushkan/-">github.com/mikushkan/-</a> · <a href="https://mektep.streamlit.app">mektep.streamlit.app</a>
+</footer>
+
+<script>
+  const careers = ['IT & Engineering','Medicine & Biology','Law & Social Sciences','Philology & Education','Design & Creative Arts'];
+  const icons = ['💻','🏥','⚖️','📚','🎨'];
+  const colors = ['#2E86AB','#e74c3c','#8e44ad','#27ae60','#f39c12'];
+
+  function updatePred() {
+    const vals = [1,2,3,4,5].map(i => parseInt(document.getElementById('v'+i).textContent));
+    const total = vals.reduce((a,b)=>a+b,0);
+    const probs = vals.map(v => v/total);
+    const maxIdx = probs.indexOf(Math.max(...probs));
+
+    document.getElementById('pred-box').textContent = icons[maxIdx]+' '+careers[maxIdx];
+
+    const sorted = probs.map((p,i)=>({p,i})).sort((a,b)=>b.p-a.p);
+    document.getElementById('probs').innerHTML = sorted.map(({p,i})=>`
+      <div class="prob-item">
+        <div class="prob-head"><span>${icons[i]} ${careers[i]}</span><span>${Math.round(p*100)}%</span></div>
+        <div class="prob-track"><div class="prob-fill" style="width:${Math.round(p*100)}%;background:${colors[i]}"></div></div>
+      </div>
+    `).join('');
+  }
+
+  updatePred();
+</script>
+</body>
+</html>
