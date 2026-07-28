@@ -24,12 +24,19 @@ EduNavigator is an intelligent web application that helps school students discov
 ### Main Dashboard
 <img width="2936" height="1606" alt="image" src="https://github.com/user-attachments/assets/1366e41c-d1e8-49fa-a798-5b910021ccf3" />
 
+<img width="2890" height="1492" alt="image" src="https://github.com/user-attachments/assets/39a3cac1-d371-4f06-9b4c-d206f8f6b4c5" />
+
+
 
 ### Career Prediction
-*(Add a screenshot here)*
+<img width="2888" height="1402" alt="image" src="https://github.com/user-attachments/assets/b3a5d5b1-4246-4a8c-bddc-c35ad14a4dcb" />
+<img width="1442" height="623" alt="image" src="https://github.com/user-attachments/assets/6eff6307-9ead-4e82-aaff-f732de8c1a8b" />
+
+
 
 ### PDF Report
-*(Add a screenshot here)*
+<img width="1242" height="1106" alt="image" src="https://github.com/user-attachments/assets/c86fc693-50df-454d-9dd6-19162c818020" />
+
 
 ---
 
