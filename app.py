@@ -37,6 +37,17 @@ st.markdown("""
         background: linear-gradient(180deg, #1a2a3a 0%, #2E86AB 100%);
     }
     [data-testid="stSidebar"] * { color: white !important; }
+
+    /* Student name input */
+    [data-testid="stSidebar"] input {color: #1a2a3a !important;
+    -webkit-text-fill-color: #1a2a3a !important;
+    background-color: white !important;
+    caret-color: #1a2a3a !important;
+}
+
+[data-testid="stSidebar"] input::placeholder {
+    color: #8a8a8a !important;
+}
     [data-testid="stSidebar"] .stSlider > div > div > div {
         background: rgba(255,255,255,0.3) !important;
     }
