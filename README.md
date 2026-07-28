@@ -1,48 +1,122 @@
-# 🚀 EduNavigator: AI-Powered Career Guidance System for School Students
+# 🎓 EduNavigator
 
-**EduNavigator** is an intelligent web application designed to help middle and high school students discover their ideal career paths. By leveraging machine learning algorithms and interactive data visualization, the system analyzes students' academic inclinations across various disciplines and provides objective, data-driven career recommendations.
+AI-Powered Career Guidance System for School Students
 
-Developed as a capstone project for the **"Orleu" National Center for Professional Development** training course (Kazakhstan).
+EduNavigator is an intelligent web application that helps school students discover suitable career paths based on their academic performance. The system uses Machine Learning (Random Forest Classifier) to analyze subject scores and predict the most appropriate professional direction.
 
----
-
-## 🌟 Key Features
-
-* **AI-Driven Predictions:** Uses an ensemble Machine Learning model (**Random Forest**) to predict the most suitable career field based on student inputs.
-* **Real-Time Interactive UI:** Built with **Streamlit**, allowing students to adjust their subject interests (1-100 scale) using intuitive sliders and get instant results.
-* **Probability Breakdown:** Shows the precise probability percentage for alternative career paths, giving a comprehensive view of the student's potential.
-* **Descriptive Statistics & Analytics:** Features an embedded analytics dashboard with **Seaborn** data visualizations, helping educators analyze overall student trends.
+🌐 Live Demo: https://mektep.streamlit.app
 
 ---
 
-## 🛠️ Tech Stack & Course Mapping
+## 🚀 Features
 
-This project practically implements core modules covered during the professional development course:
-* **Frontend/Backend:** Python, Streamlit (Web Deployment)
-* **Machine Learning:** Scikit-Learn (`Random Forest Classifier` - Module 6.4)
-* **Data Manipulation:** Pandas, NumPy (Module 4.1)
-* **Data Visualization:** Seaborn, Matplotlib (Module 3.4)
-
----
-
-## 📊 How It Works (Methodology)
-
-1. **Input Data:** The user inputs scores (1–100) reflecting interest/performance in 5 core academic areas:
-   * Technical (Math, Physics, Informatics)
-   * Natural Sciences (Biology, Chemistry)
-   * Social Sciences (History, Geography)
-   * Humanities (Languages, Literature)
-   * Creative Arts (Art, Design, Music)
-2. **Model Processing:** The trained **Random Forest** model processes the feature vector.
-3. **Output:** The app displays the primary recommended domain alongside a data table showing matching probabilities for other fields.
+- 🤖 AI-based career recommendation using Random Forest
+- 📊 Academic profile visualization
+- 📈 Career match probability analysis
+- 📄 Personalized PDF report generation
+- 🎨 Modern and responsive Streamlit interface
+- ⚡ Fast predictions with cached machine learning model
 
 ---
 
-## 🚀 Installation & Local Setup
+## 🖥️ Screenshots
 
-To run this project locally on your machine, follow these steps:
+### Main Dashboard
+<img width="2936" height="1606" alt="image" src="https://github.com/user-attachments/assets/1366e41c-d1e8-49fa-a798-5b910021ccf3" />
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/mikushkan/-.git](https://github.com/mikushkan/-.git)
-   cd -
+
+### Career Prediction
+*(Add a screenshot here)*
+
+### PDF Report
+*(Add a screenshot here)*
+
+---
+
+## 🧠 Machine Learning
+
+The application uses a Random Forest Classifier trained on a dataset of academic performance.
+
+### Input Features
+
+- Mathematics & Physics
+- Biology & Chemistry
+- History & Geography
+- Languages & Literature
+- Arts & Design
+
+### Predicted Career Areas
+
+- 💻 IT & Engineering
+- 🏥 Medicine & Biology
+- ⚖️ Law & Social Sciences
+- 📚 Philology & Education
+- 🎨 Design & Creative Arts
+
+---
+
+## 📊 Technologies Used
+
+- Python 3
+- Streamlit
+- Scikit-learn
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- ReportLab
+
+---
+
+## 📦 Installation
+
+Clone the repository:
+git clone https://github.com/mikushkan/edunavigator.git
+cd edunavigatorInstall dependencies:
+pip install -r requirements.txtRun the application:
+streamlit run app.py---
+
+## 📄 PDF Report
+
+After entering a student's academic scores, the application generates a personalized PDF report containing:
+
+- Student information
+- Recommended career path
+- Career match probabilities
+- Academic profile summary
+
+---
+
+## 🎯 Project Purpose
+
+The goal of EduNavigator is to assist school students in making informed educational and career decisions using Artificial Intelligence.
+
+The project demonstrates how Machine Learning can support career guidance by analyzing academic strengths and predicting suitable professional fields.
+
+---
+
+## 👨‍💻 Project Information
+
+Project: EduNavigator
+
+Type: AI Career Guidance System
+
+Framework: Streamlit
+
+Machine Learning: Random Forest Classifier
+
+Country: Kazakhstan 🇰🇿
+
+Organization: Orleu National Centre for Professional Development
+
+---
+
+## 📜 License
+
+This project is intended for educational and research purposes.
+
+---
+
+## ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub.
